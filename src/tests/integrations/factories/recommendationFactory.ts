@@ -1,6 +1,6 @@
 import {faker} from "@faker-js/faker";
 
-import {prisma} from "../../../src/database.js";
+import {prisma} from "../../../database.js";
 
 export async function createRecommendation () {
   const recommendation = {
@@ -16,4 +16,23 @@ export async function createRecommendation () {
 	});
 
   return insertedRecommendation;
-} 
+}
+
+export function newRecommendationInput(score?: number) {
+  const recommendation = {
+    name: faker.name.findName(),
+    youtubeLink: "https://www.youtube.com/watch?v=OgNcwvTUpBQ"
+  };
+  if(score === undefined)
+    return recommendation;
+  else
+    return {...recommendation, score};
+}
+
+export function newInvalidInput() {
+  const recommendation = {
+    name: faker.name.findName(),
+    youuuutubeLink: "https://www.youtube.com/watch?v=OgNcwvTUpBQ"
+  };
+  return recommendation;
+}
