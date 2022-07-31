@@ -1,7 +1,7 @@
 import supertest from "supertest";
 
-import app from "../app.js";
-import {prisma} from "../database.js";
+import app from "../../app.js";
+import {prisma} from "../../database.js";
 
 const agent = supertest(app);
 
