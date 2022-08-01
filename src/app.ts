@@ -11,10 +11,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/recommendations", recommendationRouter);
 if(process.env.MODE === "TEST") {
+  console.log("front-end tests mode")
   app.use(frontEndTestsRouter);
 }
+app.use("/recommendations", recommendationRouter);
 app.use(errorHandlerMiddleware);
 
 export default app;

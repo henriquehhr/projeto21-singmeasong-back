@@ -3,3 +3,7 @@ import { recommendationRepository } from "../repositories/recommendationReposito
 export async function removeAll() {
   await recommendationRepository.removeAll();
 }
+
+export async function createMany() {
+  await recommendationRepository.createMany();
+}

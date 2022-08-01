@@ -1,4 +1,4 @@
-import { Prisma } from "@prisma/client";
+import { Prisma, Recommendation } from "@prisma/client";
 import { prisma } from "../database.js";
 import { CreateRecommendationData } from "../services/recommendationsService.js";
 
@@ -73,6 +73,27 @@ async function removeAll() {
   await prisma.recommendation.deleteMany({});
 }
 
+async function createMany() {
+  const recommendations = [
+    {
+      name: "teste",
+      youtubeLink: "https://www.youtube.com/watch?v=KgXT63wPMPc",
+      score: 1
+    },
+    {
+      name: "teste 2",
+      youtubeLink: "https://www.youtube.com/watch?v=KgXT63wPMPc",
+      score: 2
+    },
+    {
+      name: "teste 3",
+      youtubeLink: "https://www.youtube.com/watch?v=KgXT63wPMPc",
+      score: 3
+    },
+  ];
+  await prisma.recommendation.createMany({data: recommendations});
+}
+
 export const recommendationRepository = {
   create,
   findAll,
@@ -81,5 +102,6 @@ export const recommendationRepository = {
   updateScore,
   getAmountByScore,
   remove,
-  removeAll
+  removeAll,
+  createMany
 };
